@@ -1,5 +1,14 @@
 <h1>Edit User</h1>
 
+<% if @user.errors.any? %>
+  <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from updating </h3>
+  <ul>
+  <% @user.errors.full_messages.each do |m| %>
+    <li><%= m %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @user do |f| %>
     Username: <%= f.text_field :username, placeholder: "Phil" %><br/><br/>
 
